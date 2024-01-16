@@ -47,11 +47,7 @@ app.get('/download', async (req, res) => {
       };
   
       const stream = ytdl(videoURL, options);
-      res.header('Content-Disposition', `attachment; filename="${title} (${bitrate}).mp3"`);
-      res.header('Content-Type', 'audio/mpeg');
-      console.log(title);
-  
-      res.attachment(`${sanitize(title)} (${bitrate}).mp3`);
+      res.attachment(`${title} (${bitrate}).mp3`);
       ffmpeg(stream)
         .audioBitrate(parseInt(bitrate, 10))
         .toFormat('mp3')
