@@ -5,8 +5,6 @@ const yts = require('yt-search');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const bodyParser = require('body-parser');
-const sanitize = require('sanitize-filename');
-
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -62,6 +60,6 @@ app.get('/download', async (req, res) => {
     }
   });
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
     console.log("Server is listening on port:", port);
 });
